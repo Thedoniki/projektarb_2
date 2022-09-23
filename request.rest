@@ -1,0 +1,160 @@
+###
+//POST A CONSUMER 
+POST http://localhost:3055/consumer/add
+Content-Type: application/json
+
+{
+     "username":"TheDon",
+     "email":"h18donme@du.se",
+     "password":"Abc123"   
+}
+
+###
+//POST A CONSUMER (LOG IN)
+
+POST http://localhost:3055/consumer/add/
+Content-Type: application/json
+
+{
+        "username":"TheLinus",
+        "email":"thelin@du.se",
+        "password":"justApassword"
+}
+
+###
+//POST A SUPERADMIN (LOG IN)
+
+POST http://localhost:3055/superadmin
+Content-Type: application/json
+
+{
+        "username":"superadmin",
+        "email":"superadmin@du.se",
+        "password":"superadmin"
+}
+
+###
+
+//POST A SUPERADMIN (LOG IN)
+
+POST http://localhost:3055/superadmin
+Content-Type: application/json
+
+{
+        "username":"superadmin2",
+        "email":"superadmin2@du.se",
+        "password":"superadmin2"
+}
+
+###
+//POST A QUESTION 
+POST http://localhost:3055/TheDon/question/
+Content-Type: application/json
+
+{
+
+"category":"Katt",
+"questionTitle":"This is the title of the question",
+"questionText":"this is the text of the question"
+
+}
+
+
+###
+//POST A CONTRIBUTOR 
+POST http://localhost:3055/contributor/
+Content-Type: application/json
+
+{
+        "username":"Linus",
+        "email":"Linus@du.se",
+        "password":"Abc123"
+}
+
+###
+//POST A QUESTION WITH CATEGORY ONLY SUPER ADMIN
+POST  http://localhost:3055/question/Hund/add
+Content-Type: application/json
+
+###
+//POST A QUESTION
+POST http://localhost:3055/Donne/question/
+Content-Type: application/json
+
+{
+        "questionTitle":"First question",
+        "category":"Category1",
+        "questionText":"This is just a random question to test if everything works fine"
+}
+
+###
+//POST A QUESTION
+POST http://localhost:3055/Done/question/
+Content-Type: application/json
+
+{
+        "questionTitle":"Second question",
+        "category":"Category2",
+        "questionText":"This is just a random question to test if everything works fine"
+}
+###
+//UPDATE QUESTION (SUPER ADMIN)
+
+PUT http://localhost:3055/question/update/1
+Content-Type: application/json
+
+{
+        "questionTitle":"Update question",
+        "questionText":"This is just a random"
+}
+
+###
+//DELETE A QUESTION (SUPER ADMIN)
+
+DELETE http://localhost:3055/question/delete/3
+Content-Type: application/json
+
+###
+//GET QUESTIONS FROM SPECIFIC USER (SUPER ADMIN)
+GET http://localhost:3055/questions/Donne/
+Content-Type: application/json
+
+
+###
+//GET ALL QUESTIONS ASKED (SUPER ADMIN)
+GET http://localhost:3055/question/all
+Content-Type: application/json
+
+###
+//DELETE CONTRIBUTOR (SUPER ADMIN)
+DELETE  http://localhost:3055/contributor/1
+Content-Type: application/json
+
+###
+//UPDATE CONTRIBUTOR INFORMATION (SUPER ADMIN)  !!!!!!!!! KRYPTERAR ÄVEN HÄR DET UPPDATERADE LÖSENORDET !!!!!!!!!!!!!
+PATCH  http://localhost:3055/contributor/update/2
+Content-Type: application/json
+
+{
+        "username":"DonikaM",
+        "email":"donikame@du.se",
+        "password":"justsomeApassword"
+}
+
+###
+//GET QUESTIONS FROM SPECIFIC USER (CONSUMER)
+
+GET  http://localhost:3055/questions/Donne
+Content-Type: application/json
+
+
+###
+//GET CONSUMERS
+// GLÖM EJ ATT EJ VISA LÖSEN NÄR DU FÅR ALLA ANV DÄR DE EJ SKA VISAS!!!!!
+GET  http://localhost:3055/consumers/
+Content-Type: application/json
+
+###
+GET http://localhost:3055/consumer/question/all/
+Content-Type: application/json
+

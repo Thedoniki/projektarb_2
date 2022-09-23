@@ -1,0 +1,97 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body>
+
+    <div id="app">
+      <form action="POST" ></form>
+
+    <div class="container"  style="max-width: 50%; max-height: 70%; align-self: center;">
+      
+      <h1 style="text-align: center; ">Login for consumer</h1>
+      <label for="username"><b>Username</b></label>
+      <input v-bind="consumer.username" id="username"  type="text"  name="username" required>
+  
+      <label for="password"><b>Password</b></label>
+      <input v-bind="consumer.password" id="password" type="password" name="password" required>
+  
+        <button type="Submit" id="submit" v-on:click="submit" style="background-color: #7aa8b7;">Login</button>
+    
+    </div>
+    </div>
+  
+
+
+
+  <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+   <script>
+
+     var vm = new Vue({
+       el: '#app',
+       data: {
+         consumer: [{
+           username,
+           password
+         }],
+        },
+        methods: {
+          submit(){
+            $(document).ready(function(){
+              var username = $('#username').val();
+              var password = $('#password').val();
+              var typeOf = { "username":username,
+               "password":password }
+
+               $.ajax({
+                 type: "POST",
+                 url: "/consumer/login/",
+                 data: typeOf,
+                 success: (data) => {
+                   if(data != false) {
+                     window.location.href= 'http://localhost:3055/' +$('#username').val();
+                    }else{
+                      alert('Please enter correct credentials');
+                      //window.location.href='http://localhost:3055/';
+                    }
+                  }
+                })
+              });
+            },
+            mounted(){
+              var self = this;
+              $.getJSON("/consumers/"+username, function(productData){
+                JSON.parse(JSON.stringify(productData));
+                self.consumers = productData;
+              });
+            }
+          }
+        });
+
+
+
+
+   </script>
+ 
+</body>
+</html>
+
+
+
+
+
+ 
